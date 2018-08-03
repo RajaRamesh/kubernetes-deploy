@@ -48,7 +48,7 @@ class KubernetesDeployTest < KubernetesDeploy::IntegrationTest
     hello_cloud.assert_unmanaged_pod_statuses("Succeeded")
     assert_logs_match_all([
       %r{Successfully deployed in \d.\ds: ServiceAccount/build-robot},
-      %r{Successfully deployed in \d.\ds: Pod/unmanaged-pod-.*}
+      %r{Successfully deployed in \d.\ds: .*Pod/unmanaged-pod-.*}
     ], in_order: true)
   end
 
