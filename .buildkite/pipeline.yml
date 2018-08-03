@@ -2,7 +2,7 @@ shared: &shared
   retry:
      automatic:
        - exit_status: "*"
-         limit: 2
+         limit: 1
 steps:
   - name: 'Run Test Suite (:kubernetes: 1.11-latest)'
     <<: *shared
