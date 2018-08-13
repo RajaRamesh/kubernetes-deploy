@@ -619,6 +619,7 @@ unknown field \"myKey\" in io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
 
     assert_logs_match_all([
       "Failed to deploy 1 priority resource",
+      "SuccessfulMountVolume", # from an event
       "Logs from container 'hello-cloud' (last 250 lines shown):",
       "sh: /some/bad/path: not found" # from logs
     ], in_order: true)

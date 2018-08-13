@@ -74,7 +74,8 @@ This repo also includes related tools for [running tasks](#kubernetes-run) and [
 * You must remove the` kubectl.kubernetes.io/last-applied-configuration` annotation from any resources in the namespace that are not included in your deploy directory. This annotation is added automatically when you create resources with `kubectl apply`. `kubernetes-deploy` will prune any resources that have this annotation and are not in the deploy directory.<sup>2</sup>
 * Each app managed by `kubernetes-deploy` must have its own exclusive Kubernetes namespace.
 
-<sup>1</sup> We run integration tests against these Kubernetes versions. Kubernetes v1.6 was officially supported in gem versions < 0.16. Kubernetes v1.5 was officially supported in gem versions < 0.12.
+<sup>1</sup> We run integration tests against these Kubernetes versions. Kubernetes v1.7 was officially
+supported in gem versions < 0.21. Kubernetes v1.6 was officially supported in gem versions < 0.16. Kubernetes v1.5 was officially supported in gem versions < 0.12.
 
 <sup>2</sup> This requirement can be bypassed with the `--no-prune` option, but it is not recommended.
 
@@ -383,7 +384,7 @@ Based on this specification `kubernetes-run` will create a new pod with the entr
 
 If you work for Shopify, just run `dev up`, but otherwise:
 
-1. [Install kubectl version 1.7.0 or higher](https://kubernetes.io/docs/user-guide/prereqs/) and make sure it is in your path
+1. [Install kubectl version 1.8.0 or higher](https://kubernetes.io/docs/user-guide/prereqs/) and make sure it is in your path
 2. [Install minikube](https://kubernetes.io/docs/getting-started-guides/minikube/#installation) (required to run the test suite)
 3. Check out the repo
 4. Run `bin/setup` to install dependencies
