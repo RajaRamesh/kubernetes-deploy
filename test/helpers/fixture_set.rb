@@ -29,8 +29,8 @@ module FixtureSetAssertions
 
     def refute_resource_exists(type, name, beta: false)
       client = beta ? v1beta1_kubeclient : kubeclient
-      client.public_send("get_#{type}", name, namespace) # 404s
-      flunk "#{type} #{name} unexpectedly existed"
+      res = client.public_send("get_#{type}", name, namespace) # 404s
+      flunk "#{type} #{name} unexpectedly existed. #{res.to_h}"
     rescue KubeException => e
       raise unless e.to_s.include?("not found")
     end
