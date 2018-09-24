@@ -74,7 +74,7 @@ class KubernetesDeployTest < KubernetesDeploy::IntegrationTest
       'statefulset(\.apps)?[ \/]"?stateful-busybox"?',
       'job(\.batch)?[ \/]"?hello-job"?',
     ] # not necessarily listed in this order
-    expected_msgs = [/Pruned 10 resources and successfully deployed 6 resources/]
+    expected_msgs = [/Pruned 9 resources and successfully deployed 6 resources/]
     expected_pruned.map do |resource|
       expected_msgs << /The following resources were pruned:.*#{resource}/
     end
