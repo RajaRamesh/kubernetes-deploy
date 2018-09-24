@@ -64,15 +64,15 @@ class KubernetesDeployTest < KubernetesDeploy::IntegrationTest
     hello_cloud.refute_web_resources_exist
 
     expected_pruned = [
-      'configmap "hello-cloud-configmap-data"',
-      'pod "unmanaged-pod-',
-      'service "web"',
-      'resourcequota "resource-quotas"',
-      'deployment(\.extensions)? "web"',
-      'ingress(\.extensions)? "web"',
-      'daemonset(\.extensions)? "ds-app"',
-      'statefulset(\.apps)? "stateful-busybox"',
-      'job(\.batch)? "hello-job"',
+      'configmap[ \/]"?hello-cloud-configmap-data"?',
+      'pod[ \/]"?unmanaged-pod-',
+      'service[ \/]"?web"?',
+      'resourcequota[ \/]"?resource-quotas"?',
+      'deployment(\.extensions)?[ \/]"?web"?',
+      'ingress(\.extensions)?[ \/]"?web"?',
+      'daemonset(\.extensions)?[ \/]"?ds-app"?',
+      'statefulset(\.apps)?[ \/]"?stateful-busybox"?',
+      'job(\.batch)?[ \/]"?hello-job"?',
     ] # not necessarily listed in this order
     expected_msgs = [/Pruned 9 resources and successfully deployed 6 resources/]
     expected_pruned.map do |resource|
@@ -1068,6 +1068,6 @@ unknown field \"myKey\" in io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
     skip if KUBE_SERVER_VERSION < Gem::Version.new('1.9.0')
     assert_deploy_success(deploy_fixtures("hpa"))
     assert_deploy_success(deploy_fixtures("hpa", subset: ["deployment.yml"]))
-    assert_logs_match_all([/The following resources were pruned: horizontalpodautoscaler(.autoscaling)? "hello-hpa"/])
+    assert_logs_match_all([/The following resources were pruned: horizontalpodautoscaler(.autoscaling)?[ \/]"?hello-hpa"?/])
   end
 end

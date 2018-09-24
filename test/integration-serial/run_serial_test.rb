@@ -160,9 +160,9 @@ class RunSerialTest < KubernetesDeploy::IntegrationTest
     assert_deploy_success(deploy_fixtures("crd", subset: %w(configmap-data.yml configmap2.yml)))
 
     assert_predicate build_kubectl.run("get", "mail.stable.example.io", "my-first-mail").last, :success?
-    refute_logs_match(/The following resources were pruned: mail(.stable.example.io)? "my-first-mail"/)
+    refute_logs_match(/The following resources were pruned: mail(.stable.example.io)?[ \/]"?my-first-mail"?/)
     assert_logs_match_all([
-      /The following resources were pruned: widget(.stable.example.io)? "my-first-widget"/,
+      /The following resources were pruned: widget(.stable.example.io)?[ \/]"?my-first-widget"?/,
       "Pruned 1 resource and successfully deployed 2 resource"
     ])
   ensure
