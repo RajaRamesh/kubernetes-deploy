@@ -24,7 +24,7 @@ steps:
     <<: *shared
     command: bin/ci
     agents:
-      queue: k8s-ci
+      queue: minikube-ci
     env:
       LOGGING_LEVEL: 4
       KUBERNETES_VERSION: v1.9-latest
