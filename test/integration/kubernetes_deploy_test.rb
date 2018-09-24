@@ -74,7 +74,7 @@ class KubernetesDeployTest < KubernetesDeploy::IntegrationTest
       'statefulset(\.apps)?[ \/]"?stateful-busybox"?',
       'job(\.batch)?[ \/]"?hello-job"?',
     ] # not necessarily listed in this order
-    expected_msgs = [/Pruned 9 resources and successfully deployed 6 resources/]
+    expected_msgs = [/Pruned 10 resources and successfully deployed 6 resources/]
     expected_pruned.map do |resource|
       expected_msgs << /The following resources were pruned:.*#{resource}/
     end
@@ -619,7 +619,6 @@ unknown field \"myKey\" in io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
 
     assert_logs_match_all([
       "Failed to deploy 1 priority resource",
-      "SuccessfulMountVolume", # from an event
       "Logs from container 'hello-cloud' (last 250 lines shown):",
       "sh: /some/bad/path: not found" # from logs
     ], in_order: true)
